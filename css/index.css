@@ -1,0 +1,332 @@
+@charset "utf-8";
+@import url(http://fonts.googleapis.com/css?family=Righteous);
+
+html { overflow:hidden }
+body { font:12px/1.6 arial; color:#555; background:#141C33 }
+
+.open {
+    position:fixed; top:30px; right:50px; 
+    z-index:999999;
+    width:50px; height:50px;
+    border-radius:50%; 
+    background-color:#000;
+    font-size:25px; color:#fff; 
+    text-align:center; 
+    line-height:50px; 
+    cursor:pointer
+}
+.open .bar {
+    display: block;
+    width: 30px; height: 4px; background-color: #fff;
+    border-radius: 2px;
+    position: absolute;
+    transition: all 0.5s;
+}
+.open .bar1{
+    top:12px; 
+    width: 30px; 
+    left: 10px;
+}
+.open .bar2{
+    top: 50%; 
+    margin-top: -2px; 
+    width: 30px; 
+    left: 10px;
+}
+.open .bar3 {
+    bottom: 12px;
+    width: 30px; 
+    left: 10px;
+}
+
+.open.on .bar1{
+    transform: translateX(4px) rotate(45deg);
+    transform-origin: 0 50%;
+}
+.open.on .bar2{
+    transform: rotate(-45deg);
+    transform-origin: 50% 50%;
+}
+.open.on .bar3 {
+    transform: translateX(11px) rotate(45deg);
+    transform-origin: 100% 50%;
+    width: 15px;
+}
+
+.openlist {
+    position:fixed; top:0; right:0; 
+    width:0%; overflow:hidden; 
+    height:100%; 
+    background: linear-gradient(90deg, #141C33, rgb(112, 112, 112)) ;
+    z-index:9999;
+    transition:  all 0.5s;
+}
+.open.on + .openlist {width: 100%;}
+.openlist ul {
+    position:absolute; 
+    top:50%; transform:translateY(-50%);
+    width:100%; left: 0; 
+    opacity: 0;
+    text-align:center;
+    font-size:50px; 
+    color:#fff;
+    line-height:2;
+    transition: all 0.5s;
+}
+.open.on +.openlist ul{ opacity: 1;}
+
+#menu { position:fixed; top:50%; transform:translateY(-50%); left:50px; z-index:99 }
+#menu li {  margin:40px 0  }
+#menu li a { display:block; height:2px;  width:30px; 
+    background-color:#fff;
+    position:relative;
+    transition: all 0.5s; 
+}
+#menu li.on a {transform:scale(1.5); transform-origin: 0 50%; }
+#menu li a span { position:absolute; top:3px; left:30px; 
+    width:100px; display:none; }    
+#menu li.on a span { display:block }
+
+#sns { position:fixed; top:40px; right:150px; z-index:99 }
+#sns li { display:inline-block;  font-size:25px; color:rgba(255, 255, 255, 0.5); 
+    margin-left:15px; transition:all 0.5s }
+#sns li:hover { transform:scale(1.5); color:rgba(255,255,255,1) }    
+
+section { 
+    width:100vw; 
+    height:100vh; 
+    position:relative;
+    overflow:hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+section h1 {position: relative; right: 18%;  font-size: 5em; letter-spacing: 18px;}
+section h2{position: absolute; right:10%; font-size: 8em;}
+section span {font-size: 50px;}
+section .about { position: absolute; line-height: 2.4; letter-spacing:4px; bottom: 30%; right: 11%; text-align: right;}
+section .hwo {position: absolute; right: 11%; top: 34%; font-size: 3em;}
+section i {font-size: 8em; color: #fff; position: absolute; top: 0; left: 0;}
+section i:nth-child(1){ top: 22%; left:38%;}
+section i:nth-child(2){ top: 28%; left:28%;}
+section i:nth-child(3){ top: 57%; left:22%;}
+section i:nth-child(4){ top: 32%; left:16%;}
+section i:nth-child(5){ top: 64%; left:35%;}
+section i:nth-child(6){ top: 36%; left:40%;}
+
+section .sdown{ 
+    position: fixed;
+    font-size: 1.4rem;
+    bottom: 4%;
+    left: 3%;
+    line-height: 1;
+    letter-spacing: 0.3em;
+    writing-mode: vertical-rl;
+    color: #fff;
+}
+section i.sdown{
+    top: 97%;
+    left: 3%;
+}
+
+/* 두번째 박스(스킬 그래프) */
+#sect2 .box {
+    /* opacity: 0;
+    transform:translate3d(0, 100%, 0); */
+    width: 80%; 
+    height: 80%; 
+    margin: 0 auto; 
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5); 
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    position: relative}
+#sect2 .box:before { 
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -40%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+    transform: skewX(-15deg);
+}
+#sect2.on .box {
+    opacity: 1;
+    transform:translate3d(0, 0%, 0);
+}    
+.text {font-size: 3em; text-transform: capitalize; position: absolute; top: 50px; left: 50px;}
+.skillContainer { position:absolute;top: 0%; left: 50%; width: 100%; transform: translateX(-50%); height:100%; text-align:center; padding:8% 0 5%;}
+.skillContainer > div {
+    height:100%; 
+    width:8%; margin:0 20px; 
+    display:inline-block; 
+    position:relative;
+    top: 0%;
+    left: 0%;
+}
+.skillContainer > div > p {
+    position:absolute; top:100%; 
+    left:0; font-size:15px; width:100%; 
+    text-align:center; font-weight: bold;
+}
+.skillContainer > div > p.js {
+    left: -11px;
+}
+.skillContainer > div > .score {
+    position:absolute; 
+    bottom:0; 
+    width:100%; 
+    overflow:hidden; 
+    height: 0%;
+    border-radius: 50px 50px 0 0;
+}
+.skillContainer > div.html > .score {background:#31BDFF;}
+.skillContainer > div.css > .score { background:#FFA363; }
+.skillContainer > div.script > .score { background:#31BDFF;}
+.skillContainer > div.jquery > .score { background:#FFA363;}
+.skillContainer > div.react > .score { background:#31BDFF; }
+
+
+.skillContainer .myscore {
+    position:absolute; top:10px; 
+    width:100%;
+    text-align:center; 
+    font-size:20px; color:#fff;
+}
+
+/* 세번째 박스 */
+#sect3 { display: inline-block; padding:100px 100px 50px }
+#sect3 .box {
+    /* opacity: 0;
+    transform:translate3d(0, 100%, 0); */
+    width: 80%; 
+    height: 80%; 
+    margin: 0 auto; 
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5); 
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    position: relative}
+#sect3 .box:before { 
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -40%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+    transform: skewX(-15deg);
+}
+#sect3.on .box {
+    opacity: 1;
+    transform:translate3d(0, 0%, 0);
+}    
+#sect3 .page {
+    
+    text-align: right;
+    margin-bottom: 5px;
+}
+#sect3 .page button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 15%;
+    border: none;
+    color: rgba(0, 0, 0, 0.5);
+    width: 20px;
+    height: 20px;
+    line-height: 1.5;
+    /* overflow: hidden; */
+}
+#sect3 .page button:nth-child(2){
+    left: 80%;
+}
+#sect3 .vis .outer { width:400%; overflow:hidden; float: left; }
+#sect3 .vis .outer ul li { float:left; width:15%; }
+#sect3 ul { position:absolute; top:50%; left: 50%; transform: translate(-50%,-50%); overflow:hidden; }
+.outer ul li img {width: 100%; height: auto;}
+#sect3 ul li { float:left; width:23.5%; margin:10px 0;  
+    margin-right:2%; 
+    transform:scale(0.5);
+    opacity:0;
+    transition:all 0.5s;
+    transition-delay:0s;
+}
+#sect3.on ul li {
+    transform:scale(1);
+    opacity:1;
+}
+#sect3.on ul li:nth-child(1) { transition-delay:0s }
+#sect3.on ul li:nth-child(2) { transition-delay:0.2s }
+#sect3.on ul li:nth-child(3) { transition-delay:0.4s }
+#sect3.on ul li:nth-child(4) { transition-delay:0.6s }
+#sect3.on ul li:nth-child(5) { transition-delay:0.8s }
+#sect3.on ul li:nth-child(6) { transition-delay:1.0s }
+#sect3.on ul li:nth-child(7) { transition-delay:1.2s }
+#sect3.on ul li:nth-child(8) { transition-delay:1.4s }
+
+#sect3 ul li:nth-child(4n) { margin-right:0 }
+
+
+
+/* 4번째 구역 */
+#sect4 { 
+    padding:200px 200px 50px 300px;
+    
+}
+#sect4 .formbox {
+    opacity:0;
+    transform:translate3d(0, 100%, 0);
+    transition:all 0.5s;
+    width: 80%; 
+    height: 80%; 
+    margin: 0 auto; 
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5); 
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    position: relative
+}
+#sect4 .formbox:before { 
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -40%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+    transform: skewX(-15deg);
+}
+#sect4.on .formbox {
+    opacity:1;
+    transform:translate3d(0, 0%, 0);
+}
+
+#sect4 col:nth-child(1) { width:20% }
+#sect4 col:nth-child(2) { width:80% }
+#sect4 h2 {position:absolute; top: 0; left: 0; width: 100%; text-align: center; color: #fff; font-size: 36px; margin-bottom: 20px;}
+#sect4 form{ position: relative; width: 100%; }
+#sect4 form table { position: relative; width: 100%; padding: 0 10px; margin: 30px 0 20px;}
+#sect4 td { padding:10px 5px; font-size:20px; color:#fff;}
+#sect4 input[type=text] { width:200px; height:30px; border-bottom:1px solid #fff; background-color: rgba(27, 30, 41, 0.5); }
+#sect4 textarea { width:500px; height:150px;box-shadow: -20px -20px -50px rgba(0, 0, 0, 0.5); background-color: rgba(27,30, 41, 0.5); border-bottom:1px solid #fff }
+#sect4 .btn { text-align:center; margin:20px }
+#sect4 button { border:none; background-color: rgba(0, 0, 0, 0.5); border-radius:40px; padding: 12px 36px; font-size:20px; color:#fff }
+
+.gotop{position: fixed; 
+    color:#fff;
+    font-size: 2em;
+    background-color: rgba(27, 30, 41, 0.2);
+    padding: 2px 5px;
+    right:50px;; bottom: 50px;}
